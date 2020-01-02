@@ -1,15 +1,20 @@
 <p>
-  This is a microsite initialized from
-  <a href="https://github.com/chadoh/microsite-template">chadoh/microsite-template</a>.
+  Stats about Aragon organizations created with Autark's Open Enterprise template.
 </p>
 <p>
-  The entire production site is one minified file with few (if any)
-  JS dependencies, but the development version uses nice tooling and
-  multiple files.
+  Goals for this page:
 </p>
-<p>This is great for making explainer websites or other simple sites.</p>
-<p>
-  These sites can also easily be hosted for free on GitHub. For more
-  info, see the README files in the root and the <code>docs</code>
-  folder, as well as <code>scripts</code> in <code>package.json</code>.
-</p>
+<ol>
+  <li>Query <a href="https://etherscan.io/address/0xc54c5db63ab0e79fbb9555373b969093deb17859">the Open Enterprise contract</a> for all transactions against it</li>
+  <li>Allow setting time period (contract inception to now, per-week stats, previous X weeks)</li>
+  <li>
+    Show a table similar to <a href="https://apiary.1hive.org/orgs">Apiary's</a> with additional columns. In this table, show:
+    <ul>
+      <li>If DAO was created successfully</li>
+      <li>Total attempts to create (failed+success)</li>
+      <li>Failure rate (#failed/#total)</li>
+      <li>Status (failed / successful) - maybe some in between status for 1 successful + 1 failed txn</li>
+      <li>Creator ethereum address (hyperlink to etherscan)</li>
+    </ul>
+  </li>
+</ol>
