@@ -1,0 +1,29 @@
+{
+  "name": "open-enterprise-stats",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Stats about Aragon organizations created with Autark's Open Enterprise template",
+  "repository": "https://github.com/chadoh/open-enterprise-stats",
+  "author": "Chad Ostrowski <hi@chadoh.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html && html-inline -i dist/index.html -o docs/index.html -b dist",
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "testRegex": "^.+\\.test\\.ts$"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build && git add docs/index.html"
+    }
+  }
+}
