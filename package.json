@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Stats about Aragon organizations created with Autark's Open Enterprise template",
-  "repository": "https://github.com/chadoh/open-enterprise-stats",
+  "repository": "https://github.com/AutarkLabs/open-enterprise-stats",
   "author": "Chad Ostrowski <hi@chadoh.com>",
   "license": "MIT",
   "scripts": {
