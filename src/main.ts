@@ -1,14 +1,36 @@
-import { initialize, buildIncrementer } from './counter'
+export {}
 
-(() => {
-  const button = document.querySelector('[data-behavior="trigger"]')
-  if (!button) return
+declare global {
+  interface Window {
+    ethereum: any; // No available typedefs for MetaMask?
+  }
+}
 
-  const counters = Array.from(document.querySelectorAll('[data-behavior="counter"]'))
+function signIn() {
+  const web3off = document.getElementById('web3-off')
+  const web3on = document.getElementById('web3-on')
+  web3off.style.display = 'none'
+  web3on.style.display = ''
+}
 
-  initialize(counters)
+async function enableWeb3() {
+  await window.ethereum.enable()
+  signIn()
+}
 
-  const increment = buildIncrementer(counters)
+function main() {
+  if (!window.ethereum) return
 
-  button.addEventListener('click', increment)
-})()
+  if (window.ethereum.selectedAddress) return signIn()
+
+  const button = document.createElement('button')
+  const text = document.createTextNode('Enable web3')
+  button.appendChild(text)
+  button.className = "link"
+  button.onclick = enableWeb3
+
+  const explainer = document.getElementById('web3-explainer')
+  explainer.parentNode.replaceChild(button, explainer)
+}
+
+document.body.onload = main

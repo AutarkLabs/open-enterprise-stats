@@ -31,7 +31,18 @@ main {
   max-width: 40em;
 }
 
-a {
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline;
+  font: inherit;
+  margin: 0;
+  outline: none;
+  padding: 0;
+}
+
+a, button {
   color: var(--primary);
 
   &:hover, &:focus {
@@ -42,28 +53,6 @@ a {
     color: var(--tertiary);
   }
 }
-
-button {
-  background: transparent;
-  border-radius: 5px;
-  border: 0.25em solid var(--primary);
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  padding: 0.5em 1em;
-  position: relative;
-  transition: top 50ms;
-  &:hover, &:focus {
-    border-color: var(--secondary);
-    top: -1px;
-  }
-  &:active {
-    background: var(--tertiary);
-    border-color: var(--tertiary);
-    top: 3px;
-  }
-}
-
 
 .columns {
   display: grid;

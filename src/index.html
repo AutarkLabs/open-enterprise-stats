@@ -13,20 +13,23 @@
   <!-- <meta name="twitter:card" content="summary_large_image"> -->
 </head>
 <body>
-  <main>
-    <h1>Open Enterprise Stats</h1>
-    <div class="columns">
-      <div>
-        <include src="explanation.html"></include>
+  <h1>Open Enterprise Stats</h1>
+  <div class="columns">
+    <div>
+      <include src="explanation.html"></include>
+    </div>
+
+    <div>
+      <div id="web3-on" style="display: none">
+        <h2>🚧 🏗 🚧 </h2>
+        <p>Under construction</p>
       </div>
 
-      <div id="counter">
-        <h2>Cool⨉<span data-behavior="counter"></span>: a JavaScript demo</h2>
-        <p><button data-behavior="trigger">Make it cooler</button></p>
-        <p>This uses TypeScript. Fancy⨉<span data-behavior="counter"></span></p>
+      <div id="web3-off">
+        <p><span id="web3-explainer">Install <a href="https://metamask.io/">MetaMask</a> (or similar)</span> to get started</p>
       </div>
     </div>
-  </main>
+  </div>
   <script src="main.ts"></script>
 </body>
 </html>
