@@ -38,6 +38,7 @@
     "typescript": "^3.7.4"
   },
   "dependencies": {
+    "eth-provider": "^0.2.5",
     "web3": "^1.2.4"
   }
 }

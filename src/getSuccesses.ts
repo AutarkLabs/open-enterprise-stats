@@ -1,15 +1,10 @@
+import provider from 'eth-provider'
 import Web3 from 'web3'
 
 // TODO: use `import` syntax (currently causes TypeScript to complain)
 const oeAbi = require('./abi.json')
 
-declare global {
-  interface Window {
-    web3: any
-  }
-}
-
-const web3 = new Web3(window.web3.currentProvider)
+const web3 = new Web3(provider('infura'))
 
 const contractAddresses = [
   '0xc54c5db63ab0e79fbb9555373b969093deb17859',
