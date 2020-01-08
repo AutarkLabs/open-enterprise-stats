@@ -1,4 +1,4 @@
-export {}
+import getSuccesses from './getSuccesses'
 
 declare global {
   interface Window {
@@ -6,11 +6,23 @@ declare global {
   }
 }
 
+async function showData() {
+  const data = document.getElementById('data')
+  if (!data) return
+
+  const daosCreated = await getSuccesses()
+  data.innerHTML = `
+    <strong>${daosCreated.length}</strong> Open Enterprise DAOs have been
+    created on mainnet
+  `
+}
+
 function signIn() {
-  const web3off = document.getElementById('web3-off')
-  const web3on = document.getElementById('web3-on')
+  const web3off = document.getElementById('web3-off') as HTMLElement
+  const web3on = document.getElementById('web3-on') as HTMLElement
   web3off.style.display = 'none'
   web3on.style.display = ''
+  showData()
 }
 
 async function enableWeb3() {
@@ -28,9 +40,8 @@ function main() {
   button.appendChild(text)
   button.className = "link"
   button.onclick = enableWeb3
-
-  const explainer = document.getElementById('web3-explainer')
-  explainer.parentNode.replaceChild(button, explainer)
+  const explainer = document.getElementById('web3-explainer') as HTMLElement
+  if (explainer.parentNode) explainer.parentNode.replaceChild(button, explainer)
 }
 
 document.body.onload = main

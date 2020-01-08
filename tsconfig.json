@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "es6"]
+    "esModuleInterop": true,
+    "lib": ["dom", "es6"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "strict": true
   }
 }
