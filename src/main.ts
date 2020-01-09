@@ -1,5 +1,9 @@
 import getSuccesses from './getSuccesses'
 
+Array.prototype.toString = function() {
+  return this.join('')
+}
+
 async function main() {
   const data = document.getElementById('data')
   if (!data) return
@@ -44,7 +48,7 @@ async function main() {
             <td><code>${dao.signature}</code></td>
             <td><code>${dao.raw.data}</code></td>
           </tr>
-        `).join('')}
+        `)}
       </tbody>
     </table>
   `
