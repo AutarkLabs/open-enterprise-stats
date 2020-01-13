@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "eth-provider": "^0.2.5",
+    "ethereum-input-data-decoder": "^0.3.0",
     "web3": "^1.2.4"
   }
 }
