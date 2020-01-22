@@ -1,0 +1,46 @@
+specVersion: 0.0.2
+description: Stats about Aragon DAOs created with the Open Enterprise template
+repository: https://github.com/AutarkLabs/open-enterprise-stats
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: OpenEnterpriseTemplate
+    network: mainnet
+    source:
+      address: '0xc54c5db63ab0e79fbb9555373b969093deb17859'
+      abi: OpenEnterpriseTemplate
+      startBlock: 8921657
+    mapping: &TEMPLATE
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - Dao
+        - Transaction
+      abis:
+        - name: OpenEnterpriseTemplate
+          file: ./abis/OpenEnterpriseTemplate.json
+      callHandlers:
+        - function: newTokenAndInstance(string,string,string,address[],uint256[],uint64[3],uint64)
+          handler: handleDaoInitialization
+        - function: newOpenEnterprise(uint64[3],uint64,bool)
+          handler: handleDaoFinalization
+      # callHandlers are not supported on Rinkeby!
+      # should we use blockHandlers instead?
+      blockHandlers:
+        - function: handleBlock
+          filter:
+            kind: call
+      file: ./src/mapping.ts
+
+  # TODO: add earlier template – The Graph does not support yaml variables?
+  # - kind: ethereum/contract
+  #   name: First Template
+  #   network: mainnet
+  #   source:
+  #     address: '0xde40122f2a86db6af51e20c79653f6cb8b30eda0'
+  #     abi: OpenEnterpriseTemplate
+  #     startBlock: 8859175
+  #   mapping:
+  #     <<: *TEMPLATE
