@@ -1,0 +1,39 @@
+enum DaoStatus {
+  "one transaction succeeded; second not yet through"
+  PENDING
+  "first or second transaction failed"
+  FAILED
+  "first & second transaction succeeded"
+  SUCCEEDED
+}
+
+enum TransactionStatus {
+  FAILED
+  SUCCEEDED
+}
+
+enum TransactionType {
+  Initialization
+  Finalization
+}
+
+type Dao @entity {
+  id: ID!
+  address: Bytes!
+  attempts: Int!
+  createdBy: Bytes!
+  displayName: String!
+  status: DaoStatus!
+  "shortcut to get timestamp of last transaction that modified this dao"
+  touchedAt: Int!
+  transactions: [Transaction!]! @derivedFrom(field: "dao")
+}
+
+type Transaction @entity {
+  id: ID!
+  block: Int!
+  dao: Dao!
+  date: Int!
+  hash: Bytes!
+  type: TransactionType!
+}
